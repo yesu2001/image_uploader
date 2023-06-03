@@ -1,23 +1,16 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
-import Post from "./model.js";
 import { config } from "dotenv";
 import multer from "multer";
-import FormData from "form-data";
-import axios from "axios";
 import cloudinary from "cloudinary";
 
 const app = express();
 config();
-// app.use(express.json({ limit: "30mb" }));
-// app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 const url = process.env.DB_URL;
 const port = process.env.PORT || 5000;
-const cloud_URL = process.env.CLOUD_URL;
-const preset_name = process.env.PRESET_NAME;
 const cloud_name = process.env.CLOUD_NAME;
 const api_key = process.env.API_KEY;
 const api_secret = process.env.API_SECRET;
