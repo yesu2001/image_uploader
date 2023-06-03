@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-import mongoose from "mongoose";
 import { config } from "dotenv";
 import multer from "multer";
 import cloudinary from "cloudinary";
@@ -9,7 +8,6 @@ const app = express();
 config();
 app.use(cors());
 
-const url = process.env.DB_URL;
 const port = process.env.PORT || 5000;
 const cloud_name = process.env.CLOUD_NAME;
 const api_key = process.env.API_KEY;
@@ -36,8 +34,6 @@ app.post("/upload", upload.single("image"), async (req, res) => {
   }
 });
 
-mongoose.connect(url).then(() => {
-  app.listen(port, () => {
-    console.log(`listening on port ${port} and connected to DB`);
-  });
+app.listen(port, () => {
+  console.log(`listening on port ${port}`);
 });
